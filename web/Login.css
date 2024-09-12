@@ -1,0 +1,55 @@
+
+header{
+    
+    height:100px;
+    margin:0;
+    background-color: white;
+    
+ 
+}
+
+h1{
+    margin:0;
+    color: cornflowerblue;
+    font-size: 30px;
+    text-align: center;
+    
+}
+body{
+    margin: 0;
+    background-image: url(imagens/fundo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.botoes{
+    margin-top: 300px;
+    margin-left: 300px;
+    margin: 0 auto;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    align-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+.botao{
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    width: 200px;
+    height: 200px;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+a{
+    text-decoration: none;  
+    color:white;
+}
+
+
+

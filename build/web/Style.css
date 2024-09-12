@@ -1,0 +1,29 @@
+nav h1{
+    font-size: 30px;
+    color:cyan;
+    text-align:center;
+    padding-top:10px;
+    margin-bottom: 100px;
+}
+
+nav{
+    height: 500px;
+    width:600px;
+    background-color: black;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-top: 100px;  
+}
+
+nav p{
+    color:white;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+nav input {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top:0px;
+    
+}
