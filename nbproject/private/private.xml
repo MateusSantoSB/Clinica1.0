@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Style.css</file>
             <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/index.html</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/conexaoBanco/Usuario.java</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Login.jsp</file>
             <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Cadastrar_Funcionario.jsp</file>
+            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/sevlets/Cadastrar_Funcionario.java</file>
             <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/sevlets/Verificar_Login.java</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Cadastrar_Paciente.jsp</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Style_Login2.css</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/conexaoBanco/ConexaoPostgres.java</file>
             <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/Crud/Especialidades.java</file>
         </group>
     </open-files>
