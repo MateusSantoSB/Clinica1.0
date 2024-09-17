@@ -6,24 +6,40 @@ nav h1{
     margin-bottom: 100px;
 }
 
-nav{
+body{
+    background-color: #253342;
+          
+}
+.areaLogin{
     height: 500px;
-    width:600px;
-    background-color: black;
-    margin-left: 500px;
-    margin-right: 500px;
-    margin-top: 100px;  
+    width: 600px;
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%); 
+    background-color: #006666;       
 }
-
-nav p{
-    color:white;
-    margin-left: 200px;
-    margin-right: 200px;
+.areaLogin h1{
+    text-align: center;
+    color: white;
+    margin-bottom: 100px;
 }
-
-nav input {
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-top:0px;
+.areaLogin form{
+    text-align: center;
+    color: white;
+}
+input[type="text"] {
+    border: none;               /* Remove as bordas */
+    border-bottom: 2px solid white; /* Adiciona uma borda inferior */
+    width: 200px;               /* Largura do input */
+    font-size: 14px;
+    color: white;                        /* Tamanho do texto */
+    padding: 5px;               /* Espaçamento interno */
+    outline: none;              /* Remove o destaque ao clicar */
+    background-color: transparent; /* Deixa o fundo transparente */
+}
+input[type="submit"]{
+    color: white;
+    background-color: transparent;
     
 }

@@ -169,7 +169,7 @@ sqlcomando="INSERT INTO medicos (nome,cpf,email,login,senha,data_nas,funcao,espe
             
 
            PreparedStatement pStatementE;
-           String slqcomando="INSERT INTO medicos(nome,cpf,email,login,senha,data_nas,funcao,especialidade,crm) VALUES(?,?,?,?,?,?,?,?,?)";
+           String slqcomando="INSERT INTO enfermeiros (nome,cpf,email,login,senha,data_nas,funcao,especialidade,registro) VALUES(?,?,?,?,?,?,?,?,?)";
             try {
                 pStatementE=ConexaoPostgres.getConexao().prepareStatement(slqcomando);
                 

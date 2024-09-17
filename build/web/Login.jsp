@@ -34,9 +34,9 @@
     </head>
     <body>
         <header>
-            <h1 style="padding-top: 30px;">CLINICA SAUDE MILITAR</h1> 
+            <h1 style="padding-top: 30px;">CLINICA GESTOR 1.0</h1> 
             <% 
-            out.println("<p> BEM VINDO " +nome_usuario+ "</p"); 
+            out.println("<p style='color:white'><i> BEM VINDO " +nome_usuario+ "</i></p"); 
           %> 
         </header>
         
@@ -53,16 +53,15 @@
         </div>
         
        <center> <a href="Cadastrar_Funcionario.jsp" target="_blank" style="">CADASTRAR FUNCIONARIO</a></center>
+       <footer style=" height:150px; margin-top: 100px">
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        <p style="color:white"><i>Clinica Gestão 1.0</i></p>
+        <center><a href="https://github.com/tatetinho">Tatetinho</a></center>
+       <center> <img src="imagens/github_logo.png" ></center>
+    
+    </footer>
     </body>
+    
+    
+    
 </html>
