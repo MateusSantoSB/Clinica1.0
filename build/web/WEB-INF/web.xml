@@ -11,6 +11,10 @@
         <servlet-name>Cadastrar_Funcionario</servlet-name>
         <servlet-class>sevlets.Cadastrar_Funcionario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Cadastrar_Paciente</servlet-name>
+        <servlet-class>sevlets.Cadastrar_Paciente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Verificar_Login</servlet-name>
         <url-pattern>/Verificar_Login</url-pattern>
@@ -18,6 +22,10 @@
     <servlet-mapping>
         <servlet-name>Cadastrar_Funcionario</servlet-name>
         <url-pattern>/Cadastrar_Funcionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cadastrar_Paciente</servlet-name>
+        <url-pattern>/Cadastrar_Paciente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

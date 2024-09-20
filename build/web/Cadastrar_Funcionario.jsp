@@ -13,7 +13,8 @@
     <body>
         <%
             String funcaoFormulario=
-                    "<form  action='Cadastrar_Funcionario.jsp' method='get'>"+
+                    "<h2>SELECIONE A FUNÇÃO</h2><br>"+
+                    "<form  action='Cadastrar_Funcionario.jsp' method='get' >"+
                    "<input type='radio'  name='funcao' value='Medico'>Medico<br>"+
                    " <br> <input type='radio'  name='funcao' value='Atendente'>Atendente<br>"+
                     "<br> <input type='radio'  name='funcao' value='Enfermeiro'>Enfermeira<br>"+
@@ -21,6 +22,7 @@
                " </form>";
                   
              String formularioMedico=
+                     "<h2>PREENCHA OS DADOS DO MEDICO</h2>"+
                      "<form action='Cadastrar_Funcionario' method='post'>"+
                      "Nome:<br><input type='text' name='nomem' size=20><br>"+
                      "Cpf:<br><input type='text' name='cpfm' size=20>"+
@@ -36,6 +38,7 @@
                      "</form>"; 
                
              String formularioAtendente=
+                     "<h2>PREENCHA OS DADOS DO ATENDENTE</h2>"+
                      "<form action='Cadastrar_Funcionario' method='post'>"+
                      "Nome:<br><input type='text' name='nomea' size=20><br>"+
                      "Cpf:<br><input type='text' name='cpfa' size=20><br>"+
@@ -49,6 +52,7 @@
                      "</form>";
                     
          String formularioEnfermeiro=
+                    "<h2>PREENCHA OS DADOS DO ENFERMEIRO</h2>"+
                     "<form action='Cadastrar_Funcionario' method='post'>"+
                      "Nome:<br><input type='text' name='nomee' size=20><br>"+
                      "Cpf:<br><input type='text' name='cpfe' size=20>"+
@@ -62,11 +66,7 @@
                      "<input type='hidden' name='funcaoOculta' value='Enfermeiro'>"+
                      "<input type='submit' value='cadastrar' style='margin-top:15px'>"+
                      "</form>"; 
-         String cadastroRealizado=
-                "<center><h2 style='color:green;'>Cadastro realizado com sucesso!!</h2></center>"+
-                 "<form action='Login.jsp' method='get'>"+
-                 "<input type='submit' value='Voltar Para o menu' style='margin-top:15px'>"+
-                 "</form>";
+        
                  
                  
                  
@@ -78,11 +78,11 @@
     
         
         <header>
-            <h1 style="padding-top:20px;padding-bottom: 25px;margin-bottom: 30px;">Cadastrar Funcionario</h1>
+            <h1 style="padding-top:20px;padding-bottom: 25px;margin-bottom: 30px;">CADASTRO DE USUARIOS</h1>
         </header>
         
         <div class="containerCadastro">
-            <h1>Cadastro</h1><br>
+            
             <%
                 
                 String funcaostr=request.getParameter("funcao");
@@ -101,21 +101,22 @@
                 }else if (funcaostr.equals("Enfermeiro")){
                     out.println(formularioEnfermeiro);
                 }
-            
-                
-            
-            
-            
-            
-            
-            
-            
-            
+
             %>
             
               
             
             
         </div>
+            
+       <footer style=" height:150px; margin-top: 100px">
+        <p style="color:white"><i>Clinica Gestão 1.0</i></p>
+        <center><a href="https://github.com/tatetinho">Tatetinho</a></center>
+        <center><img src="imagens/github_logo.png" ></center>
+    
+    </footer>     
+            
+            
+            
     </body>
 </html>
