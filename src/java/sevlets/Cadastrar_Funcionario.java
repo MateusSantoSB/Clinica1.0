@@ -1,6 +1,12 @@
 
 package sevlets;
 
+import Classes.Atendentes;
+import Classes.Enfermeiros;
+import Classes.Medicos;
+import DAO.AtendentesDAO;
+import DAO.EnfermeirosDAO;
+import DAO.MedicoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,12 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
-import conexaoBanco.*;
-import static java.lang.System.out;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.servlet.RequestDispatcher;
 
 public class Cadastrar_Funcionario extends HttpServlet {
@@ -80,38 +81,18 @@ public class Cadastrar_Funcionario extends HttpServlet {
            String email=request.getParameter("emailm");
            String login=request.getParameter("loginm");
            String senha=request.getParameter("senham");
-           String data_nas=request.getParameter("data_nasm");
-           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-           LocalDate localDate = LocalDate.parse(data_nas, formatter);
-           java.sql.Date Datasql = java.sql.Date.valueOf(localDate);
+           String data_nas=request.getParameter("data_nasm"); 
            String funcao=request.getParameter("funcaom");
            String especialidade=request.getParameter("especialidadem");
            String crm=request.getParameter("crmm");
            
-sqlcomando="INSERT INTO medicos (nome,cpf,email,login,senha,data_nas,funcao,especialidade,crm)VALUES(?,?,?,?,?,?,?,?,?)";
-           
-            try {
-                
-                pStatment=ConexaoPostgres.getConexao().prepareStatement(sqlcomando);
-                pStatment.setString(1, nome);
-                pStatment.setString(2, cpf);
-                pStatment.setString(3, email); 
-                pStatment.setString(4, login);
-                pStatment.setString(5, senha);
-                pStatment.setDate(6, Datasql);
-                pStatment.setString(7, funcao);
-                pStatment.setString(8, especialidade);
-                pStatment.setString(9, crm);
-                 
-             pStatment.executeUpdate();
-             
+  
+           Medicos medicos=new Medicos(nome,cpf,email,login,senha,data_nas,funcao,especialidade,crm);
+           MedicoDAO medicoDAO=new MedicoDAO();
+           medicoDAO.cadastrarMedico(medicos);
              
              RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Cadastrar_Funcionario.jsp");
              dispachante.forward(request, response);
-             
-            } catch (SQLException ex) {
-               
-            }
            
            
           
@@ -121,34 +102,18 @@ sqlcomando="INSERT INTO medicos (nome,cpf,email,login,senha,data_nas,funcao,espe
            String email=request.getParameter("emaila");
            String login=request.getParameter("logina");
            String senha=request.getParameter("senhaa");
-           String data_nasa=request.getParameter("data_nasa");
-           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-           LocalDate localDate = LocalDate.parse(data_nasa, formatter);
-           java.sql.Date Datasql = java.sql.Date.valueOf(localDate);
+           String data_nas=request.getParameter("data_nasa");  
            String funcao=request.getParameter("funcaoa");
            
         
-        sqlcomando="INSERT INTO usuarios (nome,cpf,email,login,senha,data_nas,funcao)VALUES(?,?,?,?,?,?,?)";
-        PreparedStatement pStatementa;
+           Atendentes atendentes=new Atendentes(nome,cpf,email,login,senha,data_nas,funcao);
+           AtendentesDAO atendentesDAO=new AtendentesDAO();
+           atendentesDAO.cadastrarAtendente(atendentes);
         
-            try {
-                pStatementa=ConexaoPostgres.getConexao().prepareStatement(sqlcomando);
-                
-                pStatementa.setString(1, nome);
-                pStatementa.setString(2, cpf);
-                pStatementa.setString(3, email);
-                pStatementa.setString(4, login);
-                pStatementa.setString(5, senha);
-                pStatementa.setDate(6, Datasql);
-                pStatementa.setString(7, funcao);
-                
-                pStatementa.executeUpdate();
+          
                 RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Cadastrar_Funcionario.jsp");
                 dispachante.forward(request, response);
-            } catch (SQLException ex) {
-                
-            }
-        
+         
         
         
         
@@ -160,40 +125,23 @@ sqlcomando="INSERT INTO medicos (nome,cpf,email,login,senha,data_nas,funcao,espe
            String login=request.getParameter("logine");
            String senha=request.getParameter("senhae");
            String data_nas=request.getParameter("data_nase");
-           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-           LocalDate localDate = LocalDate.parse(data_nas, formatter);
-           java.sql.Date Datasqle = java.sql.Date.valueOf(localDate);
            String funcao=request.getParameter("funcaoe");
            String especialidade=request.getParameter("especialidadee");
-           String crm=request.getParameter("crme");
+           String registro=request.getParameter("registroe");
             
 
-           PreparedStatement pStatementE;
-           String slqcomando="INSERT INTO enfermeiros (nome,cpf,email,login,senha,data_nas,funcao,especialidade,registro) VALUES(?,?,?,?,?,?,?,?,?)";
-            try {
-                pStatementE=ConexaoPostgres.getConexao().prepareStatement(slqcomando);
-                
-                
-                pStatementE.setString(1, nome);
-                pStatementE.setString(2, cpf);
-                pStatementE.setString(3, email);
-                pStatementE.setString(4, login);
-                pStatementE.setString(5, senha);
-                pStatementE.setDate(6, Datasqle);
-                pStatementE.setString(7, funcao);
-                pStatementE.setString(8, especialidade);
-                pStatementE.setString(9, crm);
-                
-                
-                pStatementE.executeUpdate();
+           Enfermeiros enfermeiros=new Enfermeiros(nome,cpf,email,login,senha,data_nas,funcao,especialidade,registro);
+           EnfermeirosDAO enfermeirosDAO=new EnfermeirosDAO();
+           enfermeirosDAO.cadastrarEnfermeiros(enfermeiros);
+           
+           
+           
                 
                 RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Cadastrar_Funcionario.jsp");
                 dispachante.forward(request, response);
                 
                 
-            } catch (Exception e) {
-                
-            }
+           
      
             
         

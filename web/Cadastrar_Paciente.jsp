@@ -4,37 +4,16 @@
     Author     : mateu
 --%>
 
-<%@page import="conexaoBanco.Convenios"%>
+<%@page import="DAO.ConveniosDAO"%>
+<%@page import="Classes.Convenios"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cadastrar Paciente</title>
         <link rel="stylesheet" href="Cadastrar_Paciente.css"/>
-        <%
-        
-       
-
-       
-        
-        
-            
-        
-    
-                     
-        
-
-
-
-
-
-
-
-
-
-        %>
         
     </head>
     <body>
@@ -54,7 +33,8 @@
                      <select name='convenios' style="margin-top:10px;margin-bottom: 10px;">
                     <option value=''>Selecione</option>
                     <%
-                        List<String> listaConvenios =Convenios.listarConvenios();
+                        ConveniosDAO conveniosDAO=new ConveniosDAO();
+                        List<String> listaConvenios = conveniosDAO.listarConvenios();
                         for (String convenios : listaConvenios) {
                     %>
                     <option id="conveniosp" value="<%= convenios %>"> <%= convenios %></option><br>
@@ -63,7 +43,7 @@
                     %>
                 </select><br>
                      Telefone:<br><input type='text' name='telefonep' size=20>
-                     <input type='submit' value='cadastrar' style='margin-top:15px'>
+                     <input type='submit' value='Cadastrar Paciente' style='margin-top:15px'>
                      </form>
         </div>
         

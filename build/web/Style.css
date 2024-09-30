@@ -36,10 +36,13 @@ input[type="text"] {
     color: white;                        /* Tamanho do texto */
     padding: 5px;               /* Espaçamento interno */
     outline: none;              /* Remove o destaque ao clicar */
-    background-color: transparent; /* Deixa o fundo transparente */
+    background-color: transparent;  /* Deixa o fundo transparente */
+    cursor: pointer;             
 }
 input[type="submit"]{
     color: white;
     background-color: transparent;
+    border: 1px solid white;
+    cursor: pointer;
     
 }

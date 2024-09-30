@@ -15,6 +15,34 @@
         <servlet-name>Cadastrar_Paciente</servlet-name>
         <servlet-class>sevlets.Cadastrar_Paciente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Cadastrar_Convenio</servlet-name>
+        <servlet-class>sevlets.Cadastrar_Convenio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Cadastrar_Especialidade</servlet-name>
+        <servlet-class>sevlets.Cadastrar_Especialidade</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ver_Pacientes</servlet-name>
+        <servlet-class>sevlets.Ver_Pacientes</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Ver_Medicos</servlet-name>
+        <servlet-class>sevlets.Ver_Medicos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Marcar_Consulta</servlet-name>
+        <servlet-class>sevlets.Marcar_Consulta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Triagem</servlet-name>
+        <servlet-class>sevlets.Triagem</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Consulta_Triagem</servlet-name>
+        <servlet-class>sevlets.Consulta_Triagem</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Verificar_Login</servlet-name>
         <url-pattern>/Verificar_Login</url-pattern>
@@ -26,6 +54,34 @@
     <servlet-mapping>
         <servlet-name>Cadastrar_Paciente</servlet-name>
         <url-pattern>/Cadastrar_Paciente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cadastrar_Convenio</servlet-name>
+        <url-pattern>/Cadastrar_Convenio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cadastrar_Especialidade</servlet-name>
+        <url-pattern>/Cadastrar_Especialidade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ver_Pacientes</servlet-name>
+        <url-pattern>/Ver_Pacientes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ver_Medicos</servlet-name>
+        <url-pattern>/Ver_Medicos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Marcar_Consulta</servlet-name>
+        <url-pattern>/Marcar_Consulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Triagem</servlet-name>
+        <url-pattern>/Triagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Consulta_Triagem</servlet-name>
+        <url-pattern>/Consulta_Triagem</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

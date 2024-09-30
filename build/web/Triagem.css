@@ -1,0 +1,100 @@
+header{
+    height:100px;
+    margin:0;
+    background-color: #006666;
+    
+ 
+
+}
+header h1{
+    margin:0;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+body{
+    margin:0px;
+    background-image: url(imagens/fundo2.png) ;  
+    background-size: cover;
+    background-repeat:no-repeat; 
+}
+.containerCadastro{
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 700px;
+    height: 700px;
+    margin: 0 auto;
+    margin-top: 30px;
+   
+}
+.containerCadastro h1{
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 300px;
+    color:white;
+    height: 100px;
+    margin: 0 auto;
+}
+.containerCadastro h2{
+    text-align: center;
+    margin-left: 300px;
+    margin-right: 300px;
+    color:white;
+    height: 100px;
+    margin: 0 auto;
+}
+.containerCadastro form{
+    color:white;
+    margin:0 auto;
+    height: 300px;
+    width: 270px;
+    font-size: 19px;
+    
+}
+
+
+footer img{
+    width: 30px;
+    height: 30px;
+  
+}
+footer{
+    background-color: #006666;
+    height:100px;
+    margin-top: 100px;
+    
+    
+    
+}
+footer p{
+    padding-top: 25px;
+    text-align: center;
+    
+    
+}
+footer a{
+    text-decoration: none;
+    text-align: center;
+    
+}
+.containerCadastro p{
+    color: white;
+    text-align: center;
+
+}
+.containerCadastro table{
+        margin-left: 100px;
+        border: white;
+        color:white;
+        height: 150px;
+        width: 500px;
+}
+.containerCadastro #tituloTabela h1{
+    text-align: center;
+    height: 40px;
+   
+    
+}
+.containerCadastro #tituloTabela{
+     background-color: rgba(0, 0, 0, 0);
+    
+}

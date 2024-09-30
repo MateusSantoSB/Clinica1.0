@@ -1,5 +1,11 @@
 
-package conexaoBanco;
+package Classes;
+import conexaoBanco.ConexaoPostgres;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Usuario {
@@ -9,7 +15,7 @@ public class Usuario {
     String email;
     String login;
 
-    
+   
     
     
     
@@ -64,6 +70,7 @@ public class Usuario {
     
     
     
+       
     
     
     

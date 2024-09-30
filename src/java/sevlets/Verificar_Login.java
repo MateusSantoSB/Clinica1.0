@@ -34,7 +34,7 @@ public class Verificar_Login extends HttpServlet {
              
             
             ResultSet rs=pStatement.executeQuery();
-            if(rs.next()){
+            if(rs.next()){//retorna true ou false se tem alteração no banco
              
             resultado=rs.getString("nome");
             request.setAttribute("resultado",(resultado));

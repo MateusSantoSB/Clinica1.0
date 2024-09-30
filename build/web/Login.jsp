@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Login_certo
-    Created on : 7 de set. de 2024, 20:40:38
-    Author     : mateus
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +6,7 @@
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pagina Inicial</title>
         <link rel="stylesheet" type="text/css" href="Login.css">
         
         
@@ -44,16 +40,26 @@
             <a href="Cadastrar_Paciente.jsp" target="_blank"> 
             <button class="botao">CADASTRAR PACIENTE</button>
             </a>
-                  <button class="botao">MARCAR CONSULTA</button>
-                        <button class="botao">VER PACIENTES</button>
-                            <button class="botao">CADASTRAR PLANO</button>
-                               <button class="botao">VER PLANOS</button> 
-                                    <button class="botao">VER PLANOS</button>
-                                         
+            <a href="Marca_Consulta.jsp" target="_blank">
+                    <button class="botao">MARCAR CONSULTA</button>
+                    </a>    
+                  <a href="Ver_Pacientes.jsp" target="_blank">
+                  <button class="botao">VER PACIENTES</button>
+                    </a>    
+                  <a href="Cadastrar_Convenios.jsp" target="_blank">
+                            <button class="botao">CADASTRAR CONVENIOS</button>
+                           </a>
+                                <a href="Ver_Medicos.jsp" target="_blank"> 
+                                    <button class="botao">VER MEDICOS</button> 
+                                </a>
+                              
+                               <a href="Cadastrar_Especialidade.jsp" target="_blank"> 
+                                  <button class="botao">CADASTRAR ESPECIALIDADE</button>
+                                 </a>
         </div>
         
-       <center> <a href="Cadastrar_Funcionario.jsp" target="_blank" style="">CADASTRAR FUNCIONARIO</a></center>
-       <footer style=" height:150px; margin-top: 100px">
+    <center> <a href="Cadastrar_Funcionario.jsp" target="_blank" style="">CADASTRAR FUNCIONARIO</a></center>
+       <footer>
         
         <p style="color:white"><i>Clinica Gestão 1.0</i></p>
         <center><a href="https://github.com/tatetinho">Tatetinho</a></center>
