@@ -63,7 +63,31 @@ public class PacienteDAO {
     }
     
     
-    public List<Paciente> listarPaciente(){
+    public List<Paciente> listarPacientesTriagem(){
+        List<Paciente> listaPacientes=new ArrayList<>();
+        sqlComando="SELECT * FROM pacientes WHERE status=?";
+        try { 
+            pStatement=ConexaoPostgres.getConexao().prepareStatement(sqlComando);
+            pStatement.setString(1, "Triagem");
+            rs=pStatement.executeQuery();
+            while(rs.next()){
+           Paciente paciente=new Paciente(); 
+          paciente.setNome(rs.getString("nome")); 
+          paciente.setConvenio(rs.getString("convenio"));
+          paciente.setCpf(rs.getString("cpf"));
+          paciente.setEspecialidade_consulta(rs.getString("especialidade_consulta"));
+          paciente.setRisco(rs.getString("risco"));
+          
+                       
+            listaPacientes.add(paciente);
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaPacientes;
+    }
+    
+    public List<Paciente> verPacientes(){
         List<Paciente> listaPacientes=new ArrayList<>();
         sqlComando="SELECT * FROM pacientes";
         try { 
@@ -74,6 +98,8 @@ public class PacienteDAO {
           paciente.setNome(rs.getString("nome")); 
           paciente.setConvenio(rs.getString("convenio"));
           paciente.setCpf(rs.getString("cpf"));
+          paciente.setEspecialidade_consulta(rs.getString("especialidade_consulta"));
+          paciente.setRisco(rs.getString("risco"));
           
                        
             listaPacientes.add(paciente);
@@ -112,7 +138,7 @@ public class PacienteDAO {
     
     
     public String buscarPaciente (String cpf) {
-         sqlComando="SELECT * FROM pacientes WHERE cpf=?";
+         sqlComando="SELECT * FROM pacientes WHERE cpf=? ";
          
          String nome="";
          
@@ -156,6 +182,8 @@ public class PacienteDAO {
             Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }  
     }
+    
+    
     public void definirRiscoeEspecialidadeConsulta(String risco,String especialidade,String cpf){
     sqlComando="UPDATE pacientes SET risco=?,especialidade_consulta=? WHERE cpf=? ";
     
@@ -176,7 +204,7 @@ public class PacienteDAO {
             
             
     public String buscarPorNome(String nome){
-    sqlComando="SELECT cpf FROM pacientes WHERE nome=?";
+    sqlComando="SELECT * FROM pacientes WHERE nome=?";
     String cpf="";
         try {
             pStatement=ConexaoPostgres.getConexao().prepareStatement(sqlComando);
@@ -196,6 +224,37 @@ public class PacienteDAO {
     
     
     
+    
+    
+    public List<Paciente> listarPacienteMedico(String especialidade){
+        List<Paciente> listaPacientes=new ArrayList<>();
+        sqlComando="SELECT * FROM pacientes WHERE status=? AND especialidade_consulta=? "
+                + "ORDER BY CASE " +
+                  "WHEN risco='Vermelho' THEN 1" +
+                  "WHEN risco='Amarelo' THEN 2" +
+                  "WHEN risco='Verde' THEN 3" +
+                  "END;";
+        try { 
+            pStatement=ConexaoPostgres.getConexao().prepareStatement(sqlComando);
+            pStatement.setString(1, "Medico");
+            pStatement.setString(2, especialidade);
+            rs=pStatement.executeQuery();
+            while(rs.next()){
+           Paciente paciente=new Paciente(); 
+          paciente.setNome(rs.getString("nome")); 
+          paciente.setConvenio(rs.getString("convenio"));
+          paciente.setCpf(rs.getString("cpf"));
+          paciente.setEspecialidade_consulta(rs.getString("especialidade_consulta"));
+          paciente.setRisco(rs.getString("risco"));
+          
+                       
+            listaPacientes.add(paciente);
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listaPacientes;
+    }
     
     
     

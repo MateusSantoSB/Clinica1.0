@@ -11,11 +11,12 @@
         
         
         <%
-        String nome_usuario=(String) request.getAttribute("resultado"); 
+        
+        String nome_usuario=(String) session.getAttribute("nomeUsuario"); 
         
         
         if(nome_usuario==null){
-          nome_usuario="ADMINISTRADOR";
+         response.sendRedirect("/index.html");
             
         }else{
             nome_usuario=nome_usuario.toUpperCase();

@@ -3,14 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/sevlets/Triagem.java</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/Classes/Paciente.java</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/src/java/DAO/PacienteDAO.java</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Ver_Pacientes.css</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Triagem.css</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Ver_Pacientes.jsp</file>
-            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Triagem.jsp</file>
+            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/index.html</file>
+            <file>file:/C:/Users/mateu/OneDrive/Documentos/NetBeansProjects/Clinica1.0/web/Login.jsp</file>
         </group>
     </open-files>
 </project-private>

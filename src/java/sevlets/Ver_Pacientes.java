@@ -73,7 +73,7 @@ public class Ver_Pacientes extends HttpServlet {
         if(cpfBusca !=null && !cpfBusca.isEmpty()){
             listaPaciente=pacienteDAO.listarPacientePorCpf(cpfBusca);
         }else{
-            listaPaciente=pacienteDAO.listarPaciente();
+            listaPaciente=pacienteDAO.verPacientes();
         }
         
        request.setAttribute("listaPaciente" ,listaPaciente );

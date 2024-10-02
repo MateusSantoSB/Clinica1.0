@@ -29,7 +29,7 @@
                 <tr>
                     <%
                     PacienteDAO pacienteDAO=new PacienteDAO();
-                    List<Paciente> listaPacientes=pacienteDAO.listarPaciente();
+                    List<Paciente> listaPacientes=pacienteDAO.listarPacientesTriagem();
                    
                     
                     for(Paciente listar: listaPacientes){

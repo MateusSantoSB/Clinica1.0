@@ -91,7 +91,7 @@ public class Consulta_Triagem extends HttpServlet {
         pacienteDAO.definirRiscoeEspecialidadeConsulta(risco,especialidade,cpf);
         
         
-        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Medico_Consulta.jsp");
+        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Consulta.jsp");
         dispachante.forward(request, response);
         
         

@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Marcar Consulta</title>
-        <link rel="stylesheet" type="text/css" href="Triagem.css" >
+        <link rel="stylesheet" type="text/css" href="Consulta.css" >
     </head>
     
     
@@ -16,7 +16,7 @@
     <body> 
         
         <header>
-            <h1 style="padding-top:20px;padding-bottom: 25px;margin-bottom: 30px;">TRIAGEM</h1>
+            <h1 style="padding-top:20px;padding-bottom: 25px;margin-bottom: 30px;">Medico</h1>
         </header>
         
         <div class="containerCadastro">
@@ -28,20 +28,32 @@
                 <br>
                 <tr>
                     <%
+                    String especialidade="Ortopedia";
                     PacienteDAO pacienteDAO=new PacienteDAO();
-                    List<Paciente> listaPacientes=pacienteDAO.listarPacientesTriagem();
-                   
+                    List<Paciente> listaPacientes=pacienteDAO.listarPacienteMedico(especialidade);
+                   String riscoCor="";
+                    
+                    
                     
                     for(Paciente listar: listaPacientes){
+                       if (listar.getRisco().equals("Vermelho")){
+                        riscoCor="style='color:red;'";
+                        }else if(listar.getRisco().equals("Verde")){
+                        riscoCor="style='color:green;'";
+                        }else if(listar.getRisco().equals("Amarelo")){
+                        riscoCor="style='color:yellow;'";
+                        }
                     %>
-                <form action="Triagem" method="get">
-                    <td > <%=listar.getNome()%>  </td>
+                <form action="" method="get">
+                    <td <%=riscoCor%>> <%=listar.getNome()%>  </td>
                     <td><input type="submit" name="consultaTriagem" value="Consultar" style="text-align: right;"></td>
                     <input style="margin-left:20px;" type="hidden" name="nomePacienteTriagem" value="<%=listar.getNome()%>">
                     </form>
                 </tr>
                 <%
                     }
+                    
+
                 %>
                 
                 

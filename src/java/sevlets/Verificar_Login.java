@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import conexaoBanco.*;
 import java.sql.*;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpSession;
 
 
 public class Verificar_Login extends HttpServlet {
@@ -20,9 +22,12 @@ public class Verificar_Login extends HttpServlet {
       String sqlComando="SELECT * FROM usuarios WHERE login=? AND senha=? ";
       String login=request.getParameter("usuario");
       String senha=request.getParameter("senha");
-      String resultado; 
+      String nomeUsuario; 
+      String cpfUsuario;
       PreparedStatement pStatement;
      
+   
+      
       
       if (login != null && senha != null){
       try {
@@ -36,9 +41,19 @@ public class Verificar_Login extends HttpServlet {
             ResultSet rs=pStatement.executeQuery();
             if(rs.next()){//retorna true ou false se tem alteração no banco
              
-            resultado=rs.getString("nome");
-            request.setAttribute("resultado",(resultado));
+            nomeUsuario=rs.getString("nome");
+            cpfUsuario=rs.getString("cpf");
             
+            //sessão do usuario e cookie
+            
+            
+             HttpSession session=request.getSession();
+             session.setAttribute("nomeUsuario", nomeUsuario);
+             session.setAttribute("cpfUsuario", cpfUsuario);
+                        
+             
+            //===============//
+             
             RequestDispatcher Despachante=getServletContext().getRequestDispatcher("/Login.jsp");
             Despachante.forward(request, response);
             }else{
