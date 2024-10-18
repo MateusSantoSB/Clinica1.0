@@ -12,13 +12,6 @@ header h1{
     font-size: 30px;
     text-align: center;
 }
-
-header p{
-    
-    color: white;
-    
-    
-}
 body{
     margin:0px;
     background-image: url(imagens/fundo2.png) ;  

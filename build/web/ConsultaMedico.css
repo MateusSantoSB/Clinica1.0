@@ -12,14 +12,8 @@ header h1{
     font-size: 30px;
     text-align: center;
 }
-
-header p{
-    
-    color: white;
-    
-    
-}
 body{
+    
     margin:0px;
     background-image: url(imagens/fundo2.png) ;  
     background-size: cover;
@@ -38,7 +32,7 @@ body{
     margin-left: 300px;
     margin-right: 300px;
     color:white;
-    height: 100px;
+    height: 30px;
     margin: 0 auto;
 }
 .containerCadastro h2{
@@ -104,4 +98,17 @@ footer a{
 .containerCadastro #tituloTabela{
      background-color: rgba(0, 0, 0, 0);
     
+}
+
+.containerLateral{
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100px;
+    height: 300px;
+    margin: 0;
+    margin-top: 30px; 
+}
+#lateral {
+    width: 100px;
+    height: 50px;
+    margin-left:20px ;
 }

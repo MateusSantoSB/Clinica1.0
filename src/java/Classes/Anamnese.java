@@ -4,15 +4,29 @@
  */
 package Classes;
 
+import java.util.Date;
+
 public class Anamnese {
     
     private int id;
     private String cpf;
     private String relatorio;
-
+    private Date data;
+    private String hora;
+    private String nome_enfermeiro;
+    private String regsitro;
+    private String especialidade;
+    
+    
+    
     public Anamnese(String cpf, String relatorio) {
         this.cpf = cpf;
         this.relatorio = relatorio;
+    }
+    
+    public Anamnese(){
+    
+    
     }
 
     
@@ -43,6 +57,46 @@ public class Anamnese {
 
     public void setRelatorio(String relatorio) {
         this.relatorio = relatorio;
+    }
+
+    public Date getData() {
+        return data;
+    }
+
+    public void setData(Date data) {
+        this.data = data;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getNome_enfermeiro() {
+        return nome_enfermeiro;
+    }
+
+    public void setNome_enfermeiro(String nome_enfermeiro) {
+        this.nome_enfermeiro = nome_enfermeiro;
+    }
+
+    public String getRegsitro() {
+        return regsitro;
+    }
+
+    public void setRegsitro(String regsitro) {
+        this.regsitro = regsitro;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
     }
     
     

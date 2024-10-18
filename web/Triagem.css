@@ -7,10 +7,17 @@ header{
 
 }
 header h1{
-    margin:0;
+    margin-bottom: 0;
     color: white;
     font-size: 30px;
     text-align: center;
+}
+
+header p{
+    
+    color: white;
+    
+    
 }
 body{
     margin:0px;

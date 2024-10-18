@@ -4,9 +4,11 @@
  */
 package sevlets;
 
+import Classes.Paciente;
 import DAO.PacienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class Marcar_Consulta extends HttpServlet {
+public class ListarAnamnese extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +38,10 @@ public class Marcar_Consulta extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Marcar_Consulta</title>");  
+            out.println("<title>Servlet ListarAnamnese</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Marca  _Consulta at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListarAnamnese at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -54,74 +56,71 @@ public class Marcar_Consulta extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
- 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        
-        
-        String cpf=request.getParameter("cpf");
-        PacienteDAO pacienteDAO=new PacienteDAO();
-        String resultado; 
-        
-        
-        if (cpf == null){
-            
-            resultado="Paciente não encotrado\n Verifique os dados na aba 'Ver Pacientes'";
-            request.setAttribute("resultado", cpf);
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Login.jsp");
-            dispachante.forward(request, response);
-        
-        }else {
-        
-           String nome=pacienteDAO.buscarPaciente(cpf);
-            
-            request.setAttribute("nome", nome);
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Marca_Consulta.jsp");
-            dispachante.forward(request, response);
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        processRequest(request, response);
     }
 
-   
-    
-    
-    
-    
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
+         PacienteDAO pacienteDAO=new PacienteDAO();
+      
         
-        String nomePTriagem=request.getParameter("nomePaciente");
+        String cpf=request.getParameter("cpfPaciente");
+        List<Paciente> dados= pacienteDAO.dadosPaciente(cpf);
+        String nome="";
+        String endereco="";
+        String email="";
+        String telefone="";
+        String convenio="";
         
-        if(nomePTriagem == null){
+        String data=request.getParameter("data");
+        String hora=request.getParameter("hora");
+        String relatorio=request.getParameter("relatorio");
         
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Marca_Consulta.jsp");
-            dispachante.forward(request, response);
-        }else {
-            PacienteDAO pacienteDAO=new PacienteDAO();
-            String cpf=pacienteDAO.buscarPorNome(nomePTriagem);
-            pacienteDAO.mudarStatusTriagem(cpf,"Triagem");           
-            request.setAttribute("nomePTriagem", nomePTriagem);
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Login.jsp");
-            dispachante.forward(request, response);
-        }
+        String nome_enfermeiro=request.getParameter("nome_enfermeiro");
+        String registro=request.getParameter("registro");
+        String especialidade=request.getParameter("especialidade");
         
+        for(Paciente listar:dados){
+        nome=listar.getNome();
+        endereco=listar.getEndereco();
+        email=listar.getEmail();
+        telefone=listar.getTelefone();
+        convenio=listar.getConvenio(); 
+    }
+        
+        
+        
+        
+        request.setAttribute("nome",nome);
+        request.setAttribute("cpf",cpf);
+        request.setAttribute("endereco",endereco);
+        request.setAttribute("email",email);
+        request.setAttribute("telefone",telefone);
+        request.setAttribute("convenio",convenio);
+        request.setAttribute("data",data);
+        request.setAttribute("hora",hora);
+        request.setAttribute("relatorio",relatorio);
+        request.setAttribute("registro", registro);
+        request.setAttribute("nome_enfermeiro", nome_enfermeiro);
+        request.setAttribute("especialidade", especialidade);
+        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Anamnese.jsp");
+        dispachante.forward(request, response);  
         
         
     }
-
- 
     @Override
     public String getServletInfo() {
         return "Short description";

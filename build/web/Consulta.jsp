@@ -9,14 +9,29 @@
         <title>Marcar Consulta</title>
         <link rel="stylesheet" type="text/css" href="Consulta.css" >
     </head>
+    <%
+         String nome_usuario=(String) session.getAttribute("nomeUsuario"); 
+         String especialidadeM=(String) session.getAttribute("especialidades");
+        
+        if(nome_usuario==null){
+         response.sendRedirect("/index.html");
+            
+        }else{
+            nome_usuario=nome_usuario.toUpperCase();
+        }
     
+    
+    
+    
+    %>
     
     
     
     <body> 
         
         <header>
-            <h1 style="padding-top:20px;padding-bottom: 25px;margin-bottom: 30px;">Medico</h1>
+            <h1 style="padding-top:20px;">Medico</h1>
+            <p>Bem vindo <%=nome_usuario%> - <%=especialidadeM%></p>
         </header>
         
         <div class="containerCadastro">
@@ -28,9 +43,9 @@
                 <br>
                 <tr>
                     <%
-                    String especialidade="Ortopedia";
+                    
                     PacienteDAO pacienteDAO=new PacienteDAO();
-                    List<Paciente> listaPacientes=pacienteDAO.listarPacienteMedico(especialidade);
+                    List<Paciente> listaPacientes=pacienteDAO.listarPacienteMedico(especialidadeM);
                    String riscoCor="";
                     
                     
@@ -40,14 +55,14 @@
                         riscoCor="style='color:red;'";
                         }else if(listar.getRisco().equals("Verde")){
                         riscoCor="style='color:green;'";
-                        }else if(listar.getRisco().equals("Amarelo")){
+                        }else if(listar.getRisco().equals("Amarelo")){  
                         riscoCor="style='color:yellow;'";
                         }
                     %>
-                <form action="" method="get">
+                <form action="Consulta" method="post">
                     <td <%=riscoCor%>> <%=listar.getNome()%>  </td>
                     <td><input type="submit" name="consultaTriagem" value="Consultar" style="text-align: right;"></td>
-                    <input style="margin-left:20px;" type="hidden" name="nomePacienteTriagem" value="<%=listar.getNome()%>">
+                    <input style="margin-left:20px;" type="hidden" name="nomePacienteMedico" value="<%=listar.getNome()%>">
                     </form>
                 </tr>
                 <%

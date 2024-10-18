@@ -16,6 +16,23 @@
     
     <%
         String nome=(String)request.getAttribute("nomePaciente");
+        
+        String registro=(String)session.getAttribute("registro");
+        String especialidade=(String)session.getAttribute("especialidades");
+        
+        
+        
+        
+        String nome_usuario=(String) session.getAttribute("nomeUsuario"); 
+        
+        
+        if(nome_usuario==null){
+         response.sendRedirect("/index.html");
+            
+        }else{
+            nome_usuario=nome_usuario.toUpperCase();
+        }
+
     %>
     <body> 
         
@@ -47,6 +64,9 @@
                 %>
              </select>
              <input type="hidden" name="nomePacienteTriage" value="<%=nome%>">
+             <input type="hidden" name="nome_enfermeiro" value="<%=nome_usuario %>">
+             <input type="hidden" name="registro" value="<%=registro%>">
+             <input type="hidden" name="especialidade" value="<%=especialidade%>">
             <input style="margin-top: 20px;" type="submit" name="risco" value="ENVIAR PARA CONSULTA">
             </form>  
            

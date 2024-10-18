@@ -14,7 +14,7 @@ public class ConexaoPostgres {
 public static Connection getConexao(){
 try{
    if (conexao==null){
-        conexao=DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres","postgres","123");
+        conexao=DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres?charSet=UTF8","postgres","123");
         return conexao;
    }else{
         return conexao;

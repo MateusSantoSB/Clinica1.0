@@ -43,6 +43,22 @@
         <servlet-name>Consulta_Triagem</servlet-name>
         <servlet-class>sevlets.Consulta_Triagem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ConsultaMedico</servlet-name>
+        <servlet-class>sevlets.ConsultaMedico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Consulta</servlet-name>
+        <servlet-class>sevlets.Consulta</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarProntuarios</servlet-name>
+        <servlet-class>sevlets.ListarProntuarios</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarAnamnese</servlet-name>
+        <servlet-class>sevlets.ListarAnamnese</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Verificar_Login</servlet-name>
         <url-pattern>/Verificar_Login</url-pattern>
@@ -82,6 +98,22 @@
     <servlet-mapping>
         <servlet-name>Consulta_Triagem</servlet-name>
         <url-pattern>/Consulta_Triagem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultaMedico</servlet-name>
+        <url-pattern>/ConsultaMedico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Consulta</servlet-name>
+        <url-pattern>/Consulta</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarProntuarios</servlet-name>
+        <url-pattern>/ListarProntuarios</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarAnamnese</servlet-name>
+        <url-pattern>/ListarAnamnese</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

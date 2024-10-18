@@ -4,11 +4,12 @@
  */
 package sevlets;
 
-import DAO.AnamneseDAO;
-import DAO.EspecialidadesDAO;
+import Classes.Prontuario;
 import DAO.PacienteDAO;
+import DAO.ProntuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class Consulta_Triagem extends HttpServlet {
+public class ConsultaMedico extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class Consulta_Triagem extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Consulta_Triagem</title>");            
+            out.println("<title>Servlet ConsultaMedico</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Consulta_Triagem at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConsultaMedico at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +60,36 @@ public class Consulta_Triagem extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String botao=request.getParameter("botao");
+        String nome=request.getParameter("nomePaciente");
+        String cpf=request.getParameter("cpfPaciente");
+        String url="";
+        RequestDispatcher dispachante;
+        
+        ProntuarioDAO prontuarioDAO=new ProntuarioDAO();
+    
+        
+        if(botao.equals("1")){
+        request.setAttribute("nome", nome);
+        request.setAttribute("cpf", cpf);
+      
+        dispachante=getServletContext().getRequestDispatcher("/listaProntuarios.jsp"); 
+        dispachante.forward(request, response);
+        }else if (botao.equals("2")){
+        
+        request.setAttribute("nome", nome);
+        request.setAttribute("cpf", cpf);
+       
+        dispachante=getServletContext().getRequestDispatcher("/listaAnamnese.jsp"); 
+        dispachante.forward(request, response);
+        }
+        
+        
+        
+        
+        
+        
+        
     }
 
     /**
@@ -73,51 +103,43 @@ public class Consulta_Triagem extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             request.setCharacterEncoding("UTF-8");
+            request.setCharacterEncoding("UTF-8");
             response.setContentType("text/html;charset=UTF-8");
+
+        
+        String relatorio=request.getParameter("novoProntuarioPaciente");
+        String cpf=request.getParameter("cpfPaciente");
+        String especialidade=request.getParameter("especialidade");
+        String nome_medico=request.getParameter("nome_medico");
+        String crm=request.getParameter("crm");
         
         
         
+        
+        
+       if (relatorio==null || cpf==null || relatorio.isEmpty()){
+       
+       response.sendRedirect("/Consulta.jsp");
+       }         
+                
+        Prontuario prontuario=new Prontuario(relatorio,cpf,especialidade,nome_medico,crm);
+        ProntuarioDAO prontuarioDAO=new ProntuarioDAO();
+        prontuarioDAO.criarProntuario(prontuario);
         
         PacienteDAO pacienteDAO=new PacienteDAO();
-        AnamneseDAO anamneseDAO=new AnamneseDAO();
-       
-        
-        String nomePaciente=request.getParameter("nomePacienteTriage");
-        String nome_enfermeiro=request.getParameter("nome_enfermeiro");
-        String registro=request.getParameter("registro");
-        String especialidade_enfermeiro=request.getParameter("especialidade");
+        pacienteDAO.finalizarConsulta(cpf, "NULL");
         
         
-        String cpf=pacienteDAO.buscarPorNome(nomePaciente);
-        String relatorio=request.getParameter("relatorioPaciente");
-        String risco=request.getParameter("risco");
-        String especialidade=request.getParameter("especialidadeTriagem");
-        
-        anamneseDAO.criarAnamnese(relatorio,cpf,nome_enfermeiro,registro,especialidade_enfermeiro);
-        pacienteDAO.mudarStatusTriagem(cpf,"Medico");
-        pacienteDAO.definirRiscoeEspecialidadeConsulta(risco,especialidade,cpf);
         
         
-        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Triagem.jsp");
+        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Consulta.jsp");
         dispachante.forward(request, response);
         
         
-        
-        
-        
-        
-        
-        
-        
-        
     }
+    
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

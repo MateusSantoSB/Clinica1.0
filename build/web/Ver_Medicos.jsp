@@ -23,8 +23,8 @@
              <table border="1"> 
                <tr>
                    <td style="border: 2px">NOME</td>
-                     <td style="border: 2px">CONVENIO</td>
-                     <td style="border: 2px">CPF</td>
+                     <td style="border: 2px">CRM</td>
+                     <td style="border: 2px">ESPECIALIDADE</td>
                      </tr>
                  <%
                      List<Medicos> crmBuscar = (List<Medicos>) request.getAttribute("listaMedicos");

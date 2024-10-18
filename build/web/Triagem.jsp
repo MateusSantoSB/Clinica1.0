@@ -9,14 +9,26 @@
         <title>Marcar Consulta</title>
         <link rel="stylesheet" type="text/css" href="Triagem.css" >
     </head>
-    
+    <%
+        String nome_usuario=(String) session.getAttribute("nomeUsuario"); 
+        
+        
+        if(nome_usuario==null){
+         response.sendRedirect("/index.html");
+            
+        }else{
+            nome_usuario=nome_usuario.toUpperCase();
+        }
+
+    %>
     
     
     
     <body> 
         
         <header>
-            <h1 style="padding-top:20px;padding-bottom: 25px;margin-bottom: 30px;">TRIAGEM</h1>
+            <h1 style="padding-top:20px;margin-top:0;">TRIAGEM</h1>
+            <p>Bem vindo <%=nome_usuario %></p>
         </header>
         
         <div class="containerCadastro">

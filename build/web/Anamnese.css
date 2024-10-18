@@ -1,0 +1,26 @@
+body h1,h3,h4{
+    text-align: center;
+    
+    
+}
+
+.dados{
+    border-style: dotted;
+   
+    width: 800px;
+    height: 250px;
+    margin: 0 auto;
+    
+}
+.relatorio{
+    margin-top: 50px;
+    border-style: solid;
+    width: 800px;
+    height: 400px;
+   
+    position: absolute;
+    right:50%;
+    left:50%;
+    transform: translate(-50%, -10%); 
+    
+}

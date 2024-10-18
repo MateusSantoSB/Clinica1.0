@@ -4,22 +4,22 @@
  */
 package sevlets;
 
-import DAO.AnamneseDAO;
-import DAO.EspecialidadesDAO;
 import DAO.PacienteDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import Classes.Paciente;
+import javax.servlet.http.HttpSession;
 /**
  *
  * @author mateu
  */
-public class Consulta_Triagem extends HttpServlet {
+public class ListarProntuarios extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class Consulta_Triagem extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Consulta_Triagem</title>");            
+            out.println("<title>Servlet ListarProntuarios</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Consulta_Triagem at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListarProntuarios at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -73,51 +73,57 @@ public class Consulta_Triagem extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             request.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html;charset=UTF-8");
-        
-        
-        
-        
         PacienteDAO pacienteDAO=new PacienteDAO();
-        AnamneseDAO anamneseDAO=new AnamneseDAO();
-       
-        
-        String nomePaciente=request.getParameter("nomePacienteTriage");
-        String nome_enfermeiro=request.getParameter("nome_enfermeiro");
-        String registro=request.getParameter("registro");
-        String especialidade_enfermeiro=request.getParameter("especialidade");
-        
-        
-        String cpf=pacienteDAO.buscarPorNome(nomePaciente);
-        String relatorio=request.getParameter("relatorioPaciente");
-        String risco=request.getParameter("risco");
-        String especialidade=request.getParameter("especialidadeTriagem");
-        
-        anamneseDAO.criarAnamnese(relatorio,cpf,nome_enfermeiro,registro,especialidade_enfermeiro);
-        pacienteDAO.mudarStatusTriagem(cpf,"Medico");
-        pacienteDAO.definirRiscoeEspecialidadeConsulta(risco,especialidade,cpf);
-        
-        
-        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Triagem.jsp");
-        dispachante.forward(request, response);
+        HttpSession session = request.getSession();
         
         
         
         
         
+        String cpf=request.getParameter("cpfPaciente");
+        List<Paciente> dados= pacienteDAO.dadosPaciente(cpf);
+        String nome="Nulo";
+        String endereco="Nulo";
+        String email="Nulo";
+        String telefone="Nulo";
+        String convenio="Nulo";
+        
+        String data=request.getParameter("data");
+        String hora=request.getParameter("hora");
+        String relatorio=request.getParameter("relatorio");
+        
+        String nome_medico=request.getParameter("nome_medico");
+        String crm=request.getParameter("crm");
+        String especialidade=request.getParameter("especialidade");
+        
+        for(Paciente listar:dados){
+        nome=listar.getNome();
+        endereco=listar.getEndereco();
+        email=listar.getEmail();
+        telefone=listar.getTelefone();
+        convenio=listar.getConvenio();
+        
+        }
         
         
-        
-        
-        
+        request.setAttribute("nome",nome);
+        request.setAttribute("cpf",cpf);
+        request.setAttribute("endereco",endereco);
+        request.setAttribute("email",email);
+        request.setAttribute("telefone",telefone);
+        request.setAttribute("convenio",convenio);
+        request.setAttribute("data",data);
+        request.setAttribute("hora",hora);
+        request.setAttribute("relatorio",relatorio);
+        request.setAttribute("crm", crm);
+        request.setAttribute("nome_medico", nome_medico);
+        request.setAttribute("especialidade", especialidade);
+        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Prontuario.jsp");
+        dispachante.forward(request, response);  
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+   
+    
     @Override
     public String getServletInfo() {
         return "Short description";

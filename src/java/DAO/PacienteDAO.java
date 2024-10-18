@@ -288,6 +288,57 @@ public class PacienteDAO {
     }
     
     
+    public void finalizarConsulta(String cpf,String status) {
+        sqlComando="UPDATE pacientes SET status=?,risco=?,especialidade_consulta=?  WHERE cpf=? ";
+      
+        try {
+            pStatement=ConexaoPostgres.getConexao().prepareStatement(sqlComando);
+            
+            pStatement.setString(1, status);
+            pStatement.setString(2, status);
+            pStatement.setString(3, status);
+            pStatement.setString(4, cpf);
+            pStatement.executeUpdate(); 
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
+    
+    
+    public List<Paciente> dadosPaciente(String cpf){
+    sqlComando="SELECT * FROM pacientes WHERE cpf=?";
+    List<Paciente> dadosPaciente=new ArrayList<>();
+    
+        try {
+            pStatement=ConexaoPostgres.getConexao().prepareStatement(sqlComando);
+            
+            pStatement.setString(1, cpf);
+            rs=pStatement.executeQuery();
+            
+            while(rs.next()){
+            Paciente paciente=new Paciente();
+            
+            paciente.setNome(rs.getString("nome"));
+            paciente.setEndereco(rs.getString("endereco"));
+            paciente.setData_paciente(rs.getString("data_paciente"));
+            paciente.setCpf(rs.getString("cpf"));
+            paciente.setEmail(rs.getString("email"));
+            paciente.setConvenio(rs.getString("convenio"));
+            
+            dadosPaciente.add(paciente);
+            
+            
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+        return dadosPaciente;
+    }
+    
+    
+    
     
     
     

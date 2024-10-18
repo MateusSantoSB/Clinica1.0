@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author mateu
  */
-public class Marcar_Consulta extends HttpServlet {
+public class Consulta extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +36,10 @@ public class Marcar_Consulta extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Marcar_Consulta</title>");  
+            out.println("<title>Servlet Consulta</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Marca  _Consulta at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Consulta at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -54,74 +54,47 @@ public class Marcar_Consulta extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
- 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-        
-        
-        String cpf=request.getParameter("cpf");
-        PacienteDAO pacienteDAO=new PacienteDAO();
-        String resultado; 
-        
-        
-        if (cpf == null){
-            
-            resultado="Paciente não encotrado\n Verifique os dados na aba 'Ver Pacientes'";
-            request.setAttribute("resultado", cpf);
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Login.jsp");
-            dispachante.forward(request, response);
-        
-        }else {
-        
-           String nome=pacienteDAO.buscarPaciente(cpf);
-            
-            request.setAttribute("nome", nome);
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Marca_Consulta.jsp");
-            dispachante.forward(request, response);
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        processRequest(request, response);
     }
 
-   
-    
-    
-    
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         
-        String nomePTriagem=request.getParameter("nomePaciente");
+        String nomePacienteMedico=request.getParameter("nomePacienteMedico");
         
-        if(nomePTriagem == null){
         
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Marca_Consulta.jsp");
-            dispachante.forward(request, response);
-        }else {
-            PacienteDAO pacienteDAO=new PacienteDAO();
-            String cpf=pacienteDAO.buscarPorNome(nomePTriagem);
-            pacienteDAO.mudarStatusTriagem(cpf,"Triagem");           
-            request.setAttribute("nomePTriagem", nomePTriagem);
-            RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/Login.jsp");
-            dispachante.forward(request, response);
+        
+        if(nomePacienteMedico==null){
+        
+        
+        response.sendRedirect("/Consulta.jsp");
         }
+        
+        PacienteDAO pacienteDAO=new PacienteDAO();
+       String cpfPacienteMedico=pacienteDAO.buscarPorNome(nomePacienteMedico);
+        
+       
+       
+       
+       request.setAttribute("nomePacienteMedico", nomePacienteMedico);
+       request.setAttribute("cpfPacienteMedico", cpfPacienteMedico);
+        RequestDispatcher dispachante=getServletContext().getRequestDispatcher("/ConsultaMedico.jsp");
+        dispachante.forward(request, response);
+        
+        
+        
+        
+        
         
         
         
     }
 
- 
     @Override
     public String getServletInfo() {
         return "Short description";
