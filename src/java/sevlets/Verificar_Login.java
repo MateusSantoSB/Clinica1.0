@@ -1,6 +1,6 @@
 
 package sevlets;
-
+ 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import java.sql.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession; 
 
 
 public class Verificar_Login extends HttpServlet {
