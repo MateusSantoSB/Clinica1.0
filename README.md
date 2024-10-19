@@ -27,3 +27,7 @@ tudo gerado pelos tipos de funcionarios.
 
 ---
 
+## Instalação
+Projeto muito simples apenas executando o index.html já roda!! 
+Para o slq deixei uma pasta com comandos sql para criação das tabelas necessarias!!
+
