@@ -27,8 +27,3 @@ tudo gerado pelos tipos de funcionarios.
 
 ---
 
-## Instalação
-
-Projeto muito simples apenas executando o index.html já roda!! 
-
----
