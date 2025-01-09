@@ -25,7 +25,7 @@ public class AnamneseDAO {
     ResultSet rs;
     
     
-    public void criarAnamnese(String relatorio,String cpf,String nome_enfermeiro,String registro,String especialidade) {
+        public void criarAnamnese(String relatorio,String cpf,String nome_enfermeiro,String registro,String especialidade) {
         sqlComando="INSERT INTO anamnese(relatorio,cpf_paciente,data,hora,nome_enfermeiro,registro,especialidade) VALUES (?,?,?,?,?,?,?)";
         LocalDate data= LocalDate.now();
         LocalTime hora= LocalTime.now();
