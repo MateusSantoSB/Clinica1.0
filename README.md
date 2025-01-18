@@ -23,7 +23,7 @@ tudo gerado pelos tipos de funcionarios.
 
 ## Autor
 
-- [@Tatetinho](https://www.github.com/Tatetinho)
+- [@Mateus santos](https://www.github.com/MateusSantoSB)
 
 ---
 
